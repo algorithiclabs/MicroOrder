@@ -1,0 +1,12 @@
+[project]
+name = "microorder"
+version = "0.1.0"
+description = "Change-order approval link MVP"
+requires-python = ">=3.12"
+dependencies = [
+    "Flask>=3.1,<4",
+    "gunicorn>=23,<24",
+    "psycopg[binary]>=3.2,<4",
+    "python-dotenv>=1.1,<2",
+    "resend>=2.0,<3",
+]

@@ -1,0 +1,7 @@
+microorder.sqlite3
+__pycache__/
+*.py[cod]
+.venv/
+.env
+gemini_chat.md
+.DS_Store

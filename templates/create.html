@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block title %}Create change order · MicroOrder{% endblock %}{% block content %}
+<div class="card">
+<h1>Make extra work explicit.</h1>
+<p>When a client asks for “one quick change” in Slack, email, or a call, create a link that shows the exact work, price, and timeline impact before you start.</p>
+<p class="muted">The client approves or declines. You keep a timestamped record and add approved work to your normal invoice.</p>
+<h2>Create a change-order link</h2>
+<form method="post" action="{{ url_for('create_change_order') }}">
+<label>Your name<input name="contractor_name" value="{{ values.contractor_name|default('') }}" required maxlength="120"></label>
+<label>Your email<input type="email" name="contractor_email" value="{{ values.contractor_email|default('') }}" required maxlength="254"></label>
+<label>Client name<input name="client_name" value="{{ values.client_name|default('') }}" required maxlength="120"></label>
+<label>Additional work<input name="title" value="{{ values.title|default('') }}" placeholder="e.g. Add dark mode support" required maxlength="160"></label>
+<label>What changes?<textarea name="description" required maxlength="4000" placeholder="Describe the additional work and deliverable.">{{ values.description|default('') }}</textarea></label>
+<label>Timeline impact<input name="timeline_impact" value="{{ values.timeline_impact|default('') }}" placeholder="e.g. Pushes delivery to Nov 1 or No impact" maxlength="200"></label>
+<label>Price<input name="amount" inputmode="decimal" placeholder="350.00" required></label>
+<label>Currency<div class="select-wrap"><select name="currency"><option>USD</option><option>EUR</option><option>GBP</option><option>INR</option></select></div></label>
+<button class="primary" type="submit">Create approval link</button>
+</form>
+<p class="muted">No payment is collected. No client account is required. The private recovery link will be emailed to you.</p>
+</div>{% endblock %}

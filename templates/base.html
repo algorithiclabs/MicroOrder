@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}MicroOrder{% endblock %}</title>
+  <style>
+    :root { font: 15px/1.5 system-ui,sans-serif; color:#17202a; background:#f5f7fb }
+    * { box-sizing:border-box } body { margin:0 }
+    main { max-width:720px; margin:0 auto; padding:42px 20px 72px }
+    .brand { display:flex; align-items:center; gap:10px; margin-bottom:28px; color:#14213d; font-weight:800 }
+    .brand-mark { display:grid; place-items:center; width:32px; height:32px; border-radius:10px; color:#fff; background:linear-gradient(135deg,#1769e0,#6c5ce7) }
+    .card { background:#fff; border:1px solid #e2e7f0; border-radius:18px; padding:32px; box-shadow:0 12px 36px #17202a0d }
+    h1 { font-size:clamp(1.7rem,4vw,2.25rem); line-height:1.15; letter-spacing:-.04em; margin:0 0 10px }
+    h2 { font-size:1rem; margin:28px 0 4px; color:#344054 } p { margin:10px 0 }
+    label { display:block; font-weight:650; margin-top:17px; color:#344054 }
+    input,textarea,select { width:100%; margin-top:7px; padding:12px 13px; border:1px solid #cbd4e1; border-radius:9px; background:#fff; color:inherit; font:inherit; outline:none }
+    input:focus,textarea:focus,select:focus { border-color:#1769e0; box-shadow:0 0 0 3px #1769e01f }
+    textarea { min-height:110px; resize:vertical }
+    .select-wrap { position:relative }
+    .select-wrap select { appearance:none; padding-right:42px }
+    .select-wrap:after { content:""; position:absolute; right:14px; top:50%; width:8px; height:8px; border-right:2px solid #65717d; border-bottom:2px solid #65717d; transform:translateY(-65%) rotate(45deg); pointer-events:none }
+    button,.button { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:9px; padding:11px 16px; margin-top:22px; font-weight:750; cursor:pointer; text-decoration:none }
+    .primary { color:#fff; background:#1769e0 } .approve { color:#fff; background:#16834b } .decline { color:#8a2222; background:#fff0f0 } .secondary { color:#344054; background:#eef2f7 }
+    .muted { color:#65717d } .eyebrow { color:#1769e0; font-size:.78rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase }
+    .amount { font-size:1.9rem; font-weight:800; margin:20px 0 }.notice { padding:14px; border-radius:10px; background:#eef5ff }.success { background:#eaf8f0 }.danger { background:#fff0f0 }
+    dl { display:grid; grid-template-columns:130px 1fr; gap:8px 16px } dt { color:#65717d } dd { margin:0; white-space:pre-wrap }
+    code { display:block; padding:11px 12px; border:1px solid #e2e7f0; border-radius:9px; background:#f8fafc; overflow-wrap:anywhere }
+    .link-row { display:flex; align-items:stretch; gap:8px; margin-top:7px }.link-row code { flex:1; min-width:0 }.copy-button { margin-top:0; min-width:92px; white-space:nowrap }.open-button { margin-top:0; min-width:118px; white-space:nowrap }
+    .flash { padding:12px; border-radius:9px; background:#fff0f0; color:#8a2222 }.flash.success { background:#eaf8f0; color:#17633e }.flash.warning { background:#fff7e6; color:#8a5b00 }.small { font-size:.86rem }
+    @media (max-width:520px) { main { padding:24px 14px 48px }.card { padding:22px }.link-row { display:block }.copy-button { width:100%; margin-top:8px } }
+  </style>
+</head>
+<body><main>
+  <div class="brand"><span class="brand-mark">M</span><span>MicroOrder</span></div>
+  {% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<p class="flash {{ category }}">{{ message }}</p>{% endfor %}{% endwith %}
+  {% block content %}{% endblock %}
+</main>
+<script>
+function copyLink(button) { const text = button.dataset.copy; navigator.clipboard.writeText(text).then(() => { const old = button.textContent; button.textContent = 'Copied'; setTimeout(() => button.textContent = old, 1400); }).catch(() => window.prompt('Copy this link:', text)); }
+</script>
+</body></html>

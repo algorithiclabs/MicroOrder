@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: microorder
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM
+        sync: false
+      - key: FLASK_SECRET_KEY
+        generateValue: true
