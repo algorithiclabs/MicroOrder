@@ -5,7 +5,6 @@
   <p class="eyebrow">Ready to share</p><h1>Approval link ready</h1>
   <p>Send this client link in Slack, email, or chat:</p>
   <div class="link-row"><code>{{ public_url }}</code><button class="secondary copy-button" type="button" data-copy="{{ public_url }}" onclick="copyLink(this)">Copy link</button></div>
-  <p><a class="button primary" href="{{ owner_url }}" target="_blank" rel="noopener">Open private owner page ↗</a></p>
   <h2>Private recovery link</h2>
   <p class="muted small">Use this to return to the order later. Keep it private.</p>
   <div class="link-row"><code>{{ owner_url }}</code><a class="button secondary open-button" href="{{ owner_url }}" target="_blank" rel="noopener">Open ↗</a><button class="secondary copy-button" type="button" data-copy="{{ owner_url }}" onclick="copyLink(this)">Copy</button></div>
