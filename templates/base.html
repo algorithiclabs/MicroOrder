@@ -40,5 +40,9 @@
 <script>
 function copyLink(button) { const text = button.dataset.copy; navigator.clipboard.writeText(text).then(() => { const old = button.textContent; button.textContent = 'Copied'; setTimeout(() => button.textContent = old, 1400); }).catch(() => window.prompt('Copy this link:', text)); }
 </script>
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </body></html>
